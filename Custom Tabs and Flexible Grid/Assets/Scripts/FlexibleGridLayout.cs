@@ -10,15 +10,15 @@ public class FlexibleGridLayout : LayoutGroup
 {    
     public enum FitType
     {
-        UNIFORM,
-        WIDTH,
-        HEIGHT,
-        FIXEDROWS,
-        FIXEDCOLUMNS
+        Uniform,
+        Width,
+        Height,
+        FixedRows,
+        FixedColumns
     }
 
     [Header("Flexible Grid")]
-    public FitType fitType = FitType.UNIFORM;
+    public FitType fitType = FitType.Uniform;
 
     public int rows;
     public int columns;
@@ -32,7 +32,7 @@ public class FlexibleGridLayout : LayoutGroup
     {
         base.CalculateLayoutInputHorizontal();
 
-        if (fitType == FitType.WIDTH || fitType == FitType.HEIGHT || fitType == FitType.UNIFORM)
+        if (fitType == FitType.Width || fitType == FitType.Height|| fitType == FitType.Uniform)
         {
             float squareRoot = Mathf.Sqrt(transform.childCount);
             rows = columns = Mathf.CeilToInt(squareRoot);
@@ -52,11 +52,11 @@ public class FlexibleGridLayout : LayoutGroup
             }
         }
 
-        if (fitType == FitType.WIDTH || fitType == FitType.FIXEDCOLUMNS)
+        if (fitType == FitType.Width || fitType == FitType.FixedColumns)
         {
             rows = Mathf.CeilToInt(transform.childCount / (float)columns);
         }
-        if (fitType == FitType.HEIGHT || fitType == FitType.FIXEDROWS)
+        if (fitType == FitType.Height || fitType == FitType.FixedRows)
         {
             columns = Mathf.CeilToInt(transform.childCount / (float)rows);
         }
